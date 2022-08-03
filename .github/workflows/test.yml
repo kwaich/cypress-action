@@ -19,8 +19,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cypress Run
-        run: cypress run
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
         with:
-          browser: firefox
+          browser: chrome
       
