@@ -9,6 +9,7 @@ module.exports = defineConfig({
     reporter: 'junit',
     reporterOptions: {
       mochaFile: 'results/test-output-[hash].xml'
-    }
+    },
+    video: false
   },
 });
