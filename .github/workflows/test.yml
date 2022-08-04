@@ -22,7 +22,7 @@ jobs:
       - name: Cypress Run
         
         working-directory: ./
-        run: docker run --rm --network="host" -t -v $PWD:/tests -w /tests cypress/included:10.4.0
+        run: docker-compose up
       
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.39
