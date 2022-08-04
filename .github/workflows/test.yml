@@ -14,15 +14,23 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-   
-    container: 
-      image: cypress/included:10.4.0
-      env:
-        CYPRESS_VIDEO: false
+    
     steps:
+      - name: Setup golang
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17.5
+
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Start Http Server
+        run: |
+            go run http-server.go &
+
       - name: Cypress Run
-        run: cypress run
+        env:
+          CYPRESS_VIDEO: false
+        working-directory: ./
+        run: docker run --rm --network="host" -t -v $PWD:/tests -w /tests cypress/included:10.4.0 --config baseUrl=http://localhost:8090
       
