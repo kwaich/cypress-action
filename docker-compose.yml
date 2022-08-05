@@ -1,6 +1,11 @@
+# run Cypress tests and exit with command
+#   docker-compose up --exit-code-from cypress
 services:
+  # Cypress container
   cypress:
+    # the Docker image to use from https://github.com/cypress-io/cypress-docker-images
     image: "cypress/included:10.4.0"
+    # share the current folder as volume to avoid copying
     working_dir: /tests
     volumes:
       - ./:/tests
