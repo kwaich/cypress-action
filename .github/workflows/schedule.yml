@@ -1,0 +1,28 @@
+name: Scheduled job
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: "* */1 * * *"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress Run
+        
+        working-directory: ./
+        run: docker run --rm --network="host" -t -v $PWD:/tests -w /tests cypress/included:10.4.0
+      
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.39
+        if: always()
+        with:
+          files: "results/*.xml"
+          check_name: "Integration Test Results"
+          check_run_annotations: "all tests"   
