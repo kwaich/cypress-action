@@ -10,7 +10,7 @@ PoC for web integration tests using Cypress that runs as a part of CI
 
 ## Getting started
 
-Clone the repository and setup the toolchain:
+Clone the repository:
 ```shell
 git clone git@github.com:kwaich/cypress-action.git
 cd cypress-action
