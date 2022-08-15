@@ -12,13 +12,13 @@ PoC for web integration tests using Cypress that runs as a part of CI
 
 Clone the repository and setup the toolchain:
 ```shell
-$ git clone git@github.com:kwaich/cypress-action.git
-$ cd cypress-action
+git clone git@github.com:kwaich/cypress-action.git
+cd cypress-action
 ```
 
 Run headless tests locally:
 ```shell
-$ docker run --rm --network="host" -t -v $PWD:/tests -w /tests cypress/included:10.4.0
+docker run --rm --network="host" -t -v $PWD:/tests -w /tests cypress/included:10.4.0
 ```
 
 ## Run Test Runner
